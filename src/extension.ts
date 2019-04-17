@@ -3,28 +3,23 @@
 import * as vscode from 'vscode';
 let coffeeStatus: vscode.StatusBarItem;
 let coffeeDrank = 0;
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-		//console.log('Congratulations, your extension "coffee-status" is now active!');
 	const coffeeCount = 'coffee.getCoffeeCount';
 	const coffeeAdd = 'coffee.addCoffeeCount';	
 	const coffeeCan = context.workspaceState.get("consumed", coffeeDrank);
-		//console.log('datastore: '+ coffeeCan);
 	coffeeDrank = coffeeCan;
 
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeAdd, () => {
 		addCoffeeCount();
 		context.workspaceState.update("consumed", coffeeDrank);
 		updateStatusbarItem();
-		vscode.window.showInformationMessage('Keep going! '+ coffeeCan +' coffee(s) consumed so far!');
+		vscode.window.showInformationMessage('Keep going! '+ coffeeDrank +' coffee(s) consumed so far!');
 	}));
 
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeCount, () =>{
-		vscode.window.showInformationMessage('Keep going! '+ coffeeCan +' coffee(s) consumed so far!');
+		vscode.window.showInformationMessage('Keep going! '+ coffeeDrank +' coffee(s) consumed so far!');
 	}));
 
 	//create the statusbar item
@@ -34,7 +29,6 @@ export function activate(context: vscode.ExtensionContext) {
 	coffeeStatus.command = coffeeAdd;
 	context.subscriptions.push(coffeeStatus);
 
-	//Update statusbar item
 	updateStatusbarItem();
 }
 
