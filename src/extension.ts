@@ -9,8 +9,12 @@ export function activate(context: vscode.ExtensionContext) {
 	const coffeeCount = 'coffee.getCoffeeCount';
 	const coffeeAdd = 'coffee.addCoffeeCount';	
 	const coffeeCan = context.workspaceState.get("consumed", coffeeDrank);
+		console.log(coffeeCan);
 	coffeeDrank = coffeeCan;
 
+	//
+	//Register commands
+	//
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeAdd, () => {
 		addCoffeeCount();
 		context.workspaceState.update("consumed", coffeeDrank);
@@ -22,7 +26,9 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Keep going! '+ coffeeDrank +' coffee(s) consumed so far!');
 	}));
 
+	//
 	//create the statusbar item
+	//
 	coffeeStatus = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
 	coffeeStatus.color = '#bb8';
 
@@ -43,9 +49,16 @@ function addCoffeeCount():void{
 function updateStatusbarItem()
 {
 	let n = getCoffeeConsumed();
-	if( n > 0 )
+
+	
+	if( n > 0 && n < 10)
 	{
 		coffeeStatus.text = '$(star) '+ n +' coffee(s) consumed!';
+		coffeeStatus.show();
+	}
+	else if(n >= 10)
+	{
+		coffeeStatus.text = '$(rocket) '+ n +' coffee(s) consumed!';
 		coffeeStatus.show();
 	}
 	else

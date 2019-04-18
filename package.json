@@ -4,7 +4,7 @@
 	"description": "Fun coffee consumption counter",
 	"version": "0.1.3",
 	"publisher": "TabzyRagu",
-	"icon": "coffeecup.png",
+	"icon": "images/coffeecup.png",
 	"repository": "https://github.com/TabzyRagu/vscodex-coffee",
 	"issues": "https://github.com/TabzyRagu/vscodex-coffee/issues",
 	"engines": {
@@ -26,6 +26,10 @@
 			{
 				"command": "coffee.addCoffeeCount",
 				"title": "Add Coffee to Count"
+			},
+			{
+				"command": "coffeeview.reveal",
+				"title": "Reveal Coffee view panel"
 			}
 		]
 	},
