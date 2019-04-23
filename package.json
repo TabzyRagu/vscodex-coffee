@@ -26,12 +26,26 @@
 			{
 				"command": "coffee.addCoffeeCount",
 				"title": "Add Coffee to Count"
-			},
-			{
-				"command": "coffeeview.reveal",
-				"title": "Reveal Coffee view panel"
 			}
-		]
+		],
+
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "coffee-status",
+					"title": "Coffee Status",
+					"icon": "images/coffeecup.svg"
+				}
+			]
+		},
+		"views" :{
+			"coffee-status":[
+				{
+					"id": "coffee-consumed",
+					"name": "Consumed"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

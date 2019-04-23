@@ -10,7 +10,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### Fixed
 
- Notification glitch
+    Notification glitch
 
 ## [0.1.2] - 2019-Apr 17
 
