@@ -1,15 +1,21 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+//import CoffeeProvider from './coffeeView';
+//import { Coffee, CoffeeDataProvider, CoffeeNode} from './coffeeView'
 let coffeeStatus: vscode.StatusBarItem;
 let coffeeDrank = 0;
+const update = 'Java installation expired. Please install more coffee!';
 
 export function activate(context: vscode.ExtensionContext) {
 
 	const coffeeCount = 'coffee.getCoffeeCount';
-	const coffeeAdd = 'coffee.addCoffeeCount';	
+	const coffeeAdd = 'coffee.addCoffeeCount';
+	const coffeeRefresh = 'coffeeView.refresh';
+	const coffeeUpdate = 'coffee.coffeeUpdate';
+	const coffeeReset = 'coffee.coffeeReset';
 	const coffeeCan = context.workspaceState.get("consumed", coffeeDrank);
-		console.log(coffeeCan);
+		//console.log(coffeeCan);
 	coffeeDrank = coffeeCan;
 
 	//
@@ -17,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 	//
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeAdd, () => {
 		addCoffeeCount();
-		context.workspaceState.update("consumed", coffeeDrank);
+		context.workspaceState.update("Consumed", coffeeDrank);
 		updateStatusbarItem();
 		vscode.window.showInformationMessage('Keep going! '+ coffeeDrank +' coffee(s) consumed so far!');
 	}));
@@ -25,6 +31,31 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeCount, () =>{
 		vscode.window.showInformationMessage('Keep going! '+ coffeeDrank +' coffee(s) consumed so far!');
 	}));
+
+	context.subscriptions.push(vscode.commands.registerCommand(coffeeReset, () => {
+		coffeeDrank = 0;
+		context.workspaceState.update("Consumed", coffeeDrank);
+		updateStatusbarItem();
+		vscode.window.showInformationMessage('Coffee count has been reset.');
+		
+	}));
+
+	context.subscriptions.push(vscode.commands.registerCommand(coffeeUpdate, () =>{
+		vscode.window.showInformationMessage(update);
+	}));
+
+	context.subscriptions.push(vscode.commands.registerCommand(coffeeRefresh, () => {
+		console.log('refresh hit!');
+
+	}))
+
+	//
+	//create view container
+	//
+	// vscode.window.createTreeView('coffee-status', {
+	// 	treeDataProvider: new CoffeeProvider()
+	// });
+
 
 	//
 	//create the statusbar item
@@ -43,22 +74,36 @@ function getCoffeeConsumed(){
 }
 
 function addCoffeeCount():void{
-	coffeeDrank++;	
+	coffeeDrank++;
+	coffeeTimer();
+}
+
+function coffeeTimer(){
+	let t = 120000;	
+	setTimeout(updateMsg, t);
+}
+function updateMsg(){
+	vscode.window.showInformationMessage(update);
 }
 
 function updateStatusbarItem()
 {
 	let n = getCoffeeConsumed();
 
-	
-	if( n > 0 && n < 10)
+	if(n == 1)
 	{
-		coffeeStatus.text = '$(star) '+ n +' coffee(s) consumed!';
+		coffeeStatus.text = '$(star) '+ n +' coffee consumed!';
+		vscode.window.showInformationMessage('Java installation processing...');
+		coffeeStatus.show();
+	}
+	else if( n > 1 && n < 10)
+	{
+		coffeeStatus.text = '$(star) '+ n +' coffee\'s consumed!';
 		coffeeStatus.show();
 	}
 	else if(n >= 10)
 	{
-		coffeeStatus.text = '$(rocket) '+ n +' coffee(s) consumed!';
+		coffeeStatus.text = '$(rocket) '+ n +' coffee\'s consumed!';
 		coffeeStatus.show();
 	}
 	else

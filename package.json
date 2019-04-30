@@ -26,8 +26,40 @@
 			{
 				"command": "coffee.addCoffeeCount",
 				"title": "Add Coffee to Count"
+			},
+			{
+				"command": "coffee.coffeeReset",
+				"title": "Reset Coffee Counter"
+			},
+			{
+				"command": "coffeeView.refresh",
+				"title": "Refresh",
+				"icon":{
+					"light": "images/refreshlight.svg",
+					"dark": "images/refreshdark.svg"
+				}
+			},
+			{
+				"command": "coffee.coffeeUpdate",
+				"title": "updatecoffee"
 			}
 		],
+		"menus":{
+			"view/title": [
+				{
+					"command": "coffeeView.refresh",
+					"when": "view == coffeeView",
+					"group": "navigation"
+				}				
+			],
+			"view/item/context": [
+				{
+					"command": "coffee.coffeeReset",
+					"when": "view == coffeeView",
+					"title": "Reset Count"
+				}
+			]
+		},
 
 		"viewsContainers": {
 			"activitybar": [
@@ -41,7 +73,7 @@
 		"views" :{
 			"coffee-status":[
 				{
-					"id": "coffee-consumed",
+					"id": "coffeeView",
 					"name": "Consumed"
 				}
 			]
