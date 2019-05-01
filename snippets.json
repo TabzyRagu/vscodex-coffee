@@ -8,6 +8,8 @@
             "    <head>",
             "       <meta charset=\"UTF-8\">",
             "       <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+            "       <meta name=\"keywords\" content=\"<!-- Add your keywords here -->\">",
+            "       <link rel=\"stylesheet\" href=\"css/app.css\">",
             "       <title>$0</title>",
             "   </head>",
             "   <body>",
@@ -19,6 +21,32 @@
             "</html>"
         ],
         "description": "HTML Boilerplate code"
+    },
+    "HTML Boilerplate with jQuery & FontAwesome":{
+        "prefix": "!chtmlcdn",
+        "scope": "html",
+        "body": [
+            "<!DOCTYPE html>",
+            "<html lang=\"en\">",
+            "    <head>",
+            "       <meta charset=\"UTF-8\">",
+            "       <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+            "       <meta name=\"keywords\" content=\"<!-- Add your keywords here -->\">",
+            "       <link rel=\"stylesheet\" href=\"css/app.css\">",
+            "       <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"",
+            "           integrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\">",
+            "       <title>$0</title>",
+            "   </head>",
+            "   <body>",
+            "       <header>",
+            "           <!--{TODO}-->",
+            "       </header>",
+            "   <!--//{TODO}//-->",
+            "   </body>",
+            "   <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>",
+            "</html>"
+        ]
+
     },
     "HTML Navigation Menu":{
         "prefix": "!cnavlist",
