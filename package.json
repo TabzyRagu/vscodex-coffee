@@ -2,7 +2,7 @@
 	"name": "coffee-status",
 	"displayName": "Coffee Status",
 	"description": "Fun coffee consumption counter",
-	"version": "0.1.3",
+	"version": "0.2.0",
 	"publisher": "TabzyRagu",
 	"icon": "images/coffeecup.png",
 	"repository": "https://github.com/TabzyRagu/vscodex-coffee",
@@ -11,13 +11,19 @@
 		"vscode": "^1.33.0"
 	},
 	"categories": [
-		"Other"
+		"Snippets", "Other"
 	],
 	"activationEvents": [
 		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"snippets": [
+			{
+				"language": "html",
+				"path": "./snippets.json"
+			}
+		],
 		"commands": [
 			{
 				"command": "coffee.getCoffeeCount",
