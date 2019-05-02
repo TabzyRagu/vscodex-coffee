@@ -2,7 +2,7 @@
 	"name": "coffee-status",
 	"displayName": "Coffee Status",
 	"description": "Fun coffee consumption counter",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"publisher": "TabzyRagu",
 	"icon": "images/coffeecup.png",
 	"repository": "https://github.com/TabzyRagu/vscodex-coffee",
@@ -11,7 +11,8 @@
 		"vscode": "^1.33.0"
 	},
 	"categories": [
-		"Snippets", "Other"
+		"Snippets",
+		"Other"
 	],
 	"activationEvents": [
 		"*"
@@ -44,7 +45,7 @@
 			{
 				"command": "coffeeView.refresh",
 				"title": "Refresh",
-				"icon":{
+				"icon": {
 					"light": "images/refreshlight.svg",
 					"dark": "images/refreshdark.svg"
 				}
@@ -54,13 +55,13 @@
 				"title": "updatecoffee"
 			}
 		],
-		"menus":{
+		"menus": {
 			"view/title": [
 				{
 					"command": "coffeeView.refresh",
 					"when": "view == coffeeView",
 					"group": "navigation"
-				}				
+				}
 			],
 			"view/item/context": [
 				{
@@ -70,7 +71,6 @@
 				}
 			]
 		},
-
 		"viewsContainers": {
 			"activitybar": [
 				{
@@ -80,8 +80,8 @@
 				}
 			]
 		},
-		"views" :{
-			"coffee-status":[
+		"views": {
+			"coffee-status": [
 				{
 					"id": "coffeeView",
 					"name": "Consumed"
