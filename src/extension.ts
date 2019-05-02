@@ -79,7 +79,7 @@ function addCoffeeCount():void{
 }
 
 function coffeeTimer(){
-	let t = 120000;	
+	let t = 1200000;	
 	setTimeout(updateMsg, t);
 }
 function updateMsg(){

@@ -21,7 +21,11 @@
 		"snippets": [
 			{
 				"language": "html",
-				"path": "./snippets.json"
+				"path": "./html.json"
+			},
+			{
+				"language": "css",
+				"path": "./css.json"
 			}
 		],
 		"commands": [

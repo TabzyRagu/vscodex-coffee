@@ -22,6 +22,7 @@
         ],
         "description": "HTML Boilerplate code"
     },
+    
     "HTML Boilerplate with jQuery & FontAwesome":{
         "prefix": "!chtmlcdn",
         "scope": "html",
@@ -61,5 +62,19 @@
             "</nav>"
         ],
         "description": "Navigation list"
+    },
+    "HTML Contact Form": {
+        "prefix": "!chtmlcon",
+        "scope": "html",
+        "body": [
+            "<form class=\"contact\" method=\"POST\">",
+            "   Name: <input type=\"text\" id=\"name\" placeholder=\"Name\">",
+            "   Email: <input type=\"email\" id=\"email\" placeholder=\"something@somewhere.net\"><br />",
+            "   Message: <textarea id=\"message\" rows=\"5\" cols=\"20\" placeholder=\"Your message here...\">",
+            "   </textarea><br />",
+            "   <input type=\"submit\" id=\"submit\" value=\"submit\">",
+            "   <input type=\"reset\" id=\"reset\" value=\"Reset\">",
+            "</form>"
+        ]
     }
 }
