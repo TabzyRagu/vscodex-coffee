@@ -2,7 +2,7 @@
 	"name": "coffee-status",
 	"displayName": "Coffee Status",
 	"description": "Fun coffee consumption counter",
-	"version": "0.2.1",
+	"version": "0.2.5",
 	"publisher": "TabzyRagu",
 	"icon": "images/coffeecup.png",
 	"repository": "https://github.com/TabzyRagu/vscodex-coffee",
