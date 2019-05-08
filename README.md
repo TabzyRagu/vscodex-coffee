@@ -10,10 +10,17 @@ A simple Status Bar icon that counts how many Coffee's have been consumed upon c
 
 **-** Snippets
 
-###### HTML
+### HTML
 
     !chtml       Generates boilerplate HTML 5 codebase
     !chtmlnav    Generates a navigation list element
+    !chtmlcdn    Generates a boilerplate HTML 5 codebase    with jQuery & Fontawesome
+    !chtmlcon    Generates a basic HTML Contact form.
+
+#### CSS
+
+    !ccsshtml   Generates CSS for !chtml
+    !csscon     Generates CSS for !chtmlcon
 
 More features to come!
 

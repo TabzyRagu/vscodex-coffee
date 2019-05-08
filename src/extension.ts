@@ -6,6 +6,17 @@ import * as vscode from 'vscode';
 let coffeeStatus: vscode.StatusBarItem;
 let coffeeDrank = 0;
 const update = 'Java installation expired. Please install more coffee!';
+let messages = [
+	'Keep going! ',
+	'Another one bites the dust!',
+	'You can do it! -Coffee',
+	'There is no life without water. Becasue water is needed to make coffee!',
+	'Coffee is my favorite way to trick myself into doing stuff.',
+	'Behind every successful person is a substantial amount of coffee.',
+	'So many idea\'s, so latte time.',
+	'Good idea\'s start with coffee.',
+	'I turn coffee into code.'
+]
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -23,18 +34,20 @@ export function activate(context: vscode.ExtensionContext) {
 	//
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeAdd, () => {
 		addCoffeeCount();
-		context.workspaceState.update("Consumed", coffeeDrank);
+		let i = randMessage();
+		context.workspaceState.update("Consumed", getCoffeeConsumed());
 		updateStatusbarItem();
-		vscode.window.showInformationMessage('Keep going! '+ coffeeDrank +' coffee(s) consumed so far!');
+		vscode.window.showInformationMessage(messages[i]);
 	}));
 
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeCount, () =>{
-		vscode.window.showInformationMessage('Keep going! '+ coffeeDrank +' coffee(s) consumed so far!');
+		let i = randMessage();
+		vscode.window.showInformationMessage(getCoffeeConsumed() + ' consumed.');
 	}));
 
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeReset, () => {
 		coffeeDrank = 0;
-		context.workspaceState.update("Consumed", coffeeDrank);
+		context.workspaceState.update("Consumed", getCoffeeConsumed());
 		updateStatusbarItem();
 		vscode.window.showInformationMessage('Coffee count has been reset.');
 		
@@ -84,6 +97,10 @@ function coffeeTimer(){
 }
 function updateMsg(){
 	vscode.window.showInformationMessage(update);
+}
+
+function randMessage(){
+	return Math.floor((Math.random() * messages.length) + 1);
 }
 
 function updateStatusbarItem()
