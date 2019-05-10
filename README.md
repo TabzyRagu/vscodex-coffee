@@ -1,6 +1,6 @@
 # coffee-status README
 
-[![license](https://img.shields.io/badge/license-GNU-brightgreen.svg)](https://github.com/TabzyRagu/vscodex-coffee/master/LICENSE.md)
+[![license](https://img.shields.io/badge/license-GPL-brightgreen.svg)](https://github.com/TabzyRagu/vscodex-coffee/master/LICENSE.md)
 
 This extension is just for fun and serves little 'functional' use, except to see how addicted to coffee you are :D
 
