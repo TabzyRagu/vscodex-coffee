@@ -4,6 +4,28 @@ All notable changes to the "coffee-status" extension will be documented in this 
 
 ## [Unreleased]
 
+## [0.3.1] - 2019-May 10
+
+### Updated
+
+        -Changelog
+        -Readme
+
+## [0.3.0] - 2019-May 10
+
+### Fixed
+
+        -Custom Tree View
+                -Counter now displays in a custom tree view panel.
+                -Updates counter in tree-view automagically
+
+### Removed
+
+        -coffeeView.ts file
+                -No longer required
+                -Condensed down in the main extension.ts
+
+
 ## [0.2.5] - 2019-May 8
 
 ### Added

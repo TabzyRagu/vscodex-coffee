@@ -5,6 +5,7 @@ This extension is just for fun and serves little 'functional' use, except to see
 ## Features
 
 A simple Status Bar icon that counts how many Coffee's have been consumed upon clicking the icon.
+Custom tree-view panel, displaying the current count consumed!
 
 **-** Persistant storage of coffee's consumed per workspace.
 
@@ -23,5 +24,7 @@ A simple Status Bar icon that counts how many Coffee's have been consumed upon c
     !csscon     Generates CSS for !chtmlcon
 
 More features to come!
+
+Any suggestions/comments please add them to the <http://github.com/TabzyRagu/vscodex-coffee/issues>
 
 **Enjoy!**
