@@ -43,7 +43,7 @@
 				"title": "Reset Coffee Counter"
 			},
 			{
-				"command": "coffeeView.refresh",
+				"command": "coffee.refresh",
 				"title": "Refresh",
 				"icon": {
 					"light": "images/refreshlight.svg",
@@ -58,7 +58,7 @@
 		"menus": {
 			"view/title": [
 				{
-					"command": "coffeeView.refresh",
+					"command": "coffee.refresh",
 					"when": "view == coffeeView",
 					"group": "navigation"
 				}
@@ -66,8 +66,9 @@
 			"view/item/context": [
 				{
 					"command": "coffee.coffeeReset",
-					"when": "view == coffeeView",
-					"title": "Reset Count"
+					"when": "viewItem == coffeeView",
+					"title": "Reset Count",
+					"group": "inline"
 				}
 			]
 		},
@@ -84,7 +85,7 @@
 			"coffee-status": [
 				{
 					"id": "coffeeView",
-					"name": "Consumed"
+					"name": ""
 				}
 			]
 		}

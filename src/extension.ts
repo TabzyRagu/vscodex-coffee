@@ -1,8 +1,5 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-//import CoffeeProvider from './coffeeView';
-//import { Coffee, CoffeeDataProvider, CoffeeNode} from './coffeeView'
+
 let coffeeStatus: vscode.StatusBarItem;
 let coffeeDrank = 0;
 const update = 'Java installation expired. Please install more coffee!';
@@ -22,11 +19,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const coffeeCount = 'coffee.getCoffeeCount';
 	const coffeeAdd = 'coffee.addCoffeeCount';
-	const coffeeRefresh = 'coffeeView.refresh';
+	const coffeeRefresh = 'coffee.refresh';
 	const coffeeUpdate = 'coffee.coffeeUpdate';
 	const coffeeReset = 'coffee.coffeeReset';
 	const coffeeCan = context.workspaceState.get("consumed", coffeeDrank);
-		//console.log(coffeeCan);
 	coffeeDrank = coffeeCan;
 
 	//
@@ -37,6 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
 		let i = randMessage();
 		context.workspaceState.update("Consumed", getCoffeeConsumed());
 		updateStatusbarItem();
+		refreshTreeView();
 		vscode.window.showInformationMessage(messages[i]);
 	}));
 
@@ -58,17 +55,56 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeRefresh, () => {
-		console.log('refresh hit!');
-
+// console.log('refresh hit!');
+		refreshTreeView();
 	}))
 
 	//
 	//create view container
 	//
-	// vscode.window.createTreeView('coffee-status', {
-	// 	treeDataProvider: new CoffeeProvider()
-	// });
+	vscode.window.createTreeView('coffeeView', {
+		treeDataProvider: CoffeeProvider()
+	});
 
+	function CoffeeProvider(): vscode.TreeDataProvider<{}> {  
+		
+		
+		return{
+			getChildren,
+			getTreeItem        
+		}
+	}
+	
+	async function getChildren(element: string): Promise<string[]> {
+// console.log(coffeeDrank);
+		return [			
+			coffeeDrank.toString()			
+		];
+	}
+	
+	function getTreeItem(item: string): vscode.TreeItem {
+
+		return{
+			
+			id: 'consumed',
+			collapsibleState: void 0,
+			label:'Consumed - '+ coffeeDrank.toString(),
+			tooltip: 'Coffee\'s consumed'
+			
+		}
+	}
+
+	function refreshTreeView(){
+		let obj = getTreeItem('consumed');
+		obj.label = 'Consumed - '+ coffeeDrank.toString();
+		obj.contextValue = coffeeDrank.toString();
+
+		vscode.window.createTreeView('coffeeView', {
+			treeDataProvider: CoffeeProvider()
+		});
+
+// console.log(obj);
+	}
 
 	//
 	//create the statusbar item
