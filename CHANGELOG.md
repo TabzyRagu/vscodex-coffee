@@ -4,6 +4,10 @@ All notable changes to the "coffee-status" extension will be documented in this 
 
 ## [Unreleased]
 
+## [0.3.2]
+
+        -Add Licence.md
+
 ## [0.3.1] - 2019-May 10
 
 ### Updated
@@ -23,8 +27,7 @@ All notable changes to the "coffee-status" extension will be documented in this 
 
         -coffeeView.ts file
                 -No longer required
-                -Condensed down in the main extension.ts
-
+                -Condensed down in the main extension.
 
 ## [0.2.5] - 2019-May 8
 
