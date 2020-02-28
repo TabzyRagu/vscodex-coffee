@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 let coffeeStatus: vscode.StatusBarItem;
-let coffeeDrank = 0;
+let gcoffeeDrank = 0;
 const update = 'Java installation expired. Please install more coffee!';
 let messages = [
 	'Keep going! ',
@@ -13,7 +13,7 @@ let messages = [
 	'So many idea\'s, so latte time.',
 	'Good idea\'s start with coffee.',
 	'I turn coffee into code.'
-]
+];
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -22,8 +22,8 @@ export function activate(context: vscode.ExtensionContext) {
 	const coffeeRefresh = 'coffee.refresh';
 	const coffeeUpdate = 'coffee.coffeeUpdate';
 	const coffeeReset = 'coffee.coffeeReset';
-	const coffeeCan = context.workspaceState.get("consumed", coffeeDrank);
-	coffeeDrank = coffeeCan;
+	const gcoffeeCan = context.globalState.get("gConsumed", gcoffeeDrank);
+	gcoffeeDrank = gcoffeeCan;
 
 	//
 	//Register commands
@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeAdd, () => {
 		addCoffeeCount();
 		let i = randMessage();
-		context.workspaceState.update("Consumed", getCoffeeConsumed());
+		context.globalState.update("gConsumed", getCoffeeConsumed());
 		updateStatusbarItem();
 		refreshTreeView();
 		vscode.window.showInformationMessage(messages[i]);
@@ -43,10 +43,10 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeReset, () => {
-		coffeeDrank = 0;
-		context.workspaceState.update("Consumed", getCoffeeConsumed());
+		gcoffeeDrank = 0;
+		context.globalState.update("gConsumed", getCoffeeConsumed());
 		updateStatusbarItem();
-		vscode.window.showInformationMessage('Coffee count has been reset.');
+		vscode.window.showInformationMessage('Coffee count\'s has been reset.');
 		
 	}));
 
@@ -57,7 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand(coffeeRefresh, () => {
 // console.log('refresh hit!');
 		refreshTreeView();
-	}))
+	}));
 
 	//
 	//create view container
@@ -72,13 +72,13 @@ export function activate(context: vscode.ExtensionContext) {
 		return{
 			getChildren,
 			getTreeItem        
-		}
+		};
 	}
 	
 	async function getChildren(element: string): Promise<string[]> {
 // console.log(coffeeDrank);
-		return [			
-			coffeeDrank.toString()			
+		return [
+			gcoffeeCan.toString()
 		];
 	}
 	
@@ -86,18 +86,18 @@ export function activate(context: vscode.ExtensionContext) {
 
 		return{
 			
-			id: 'consumed',
+			id: 'gconsumed',
 			collapsibleState: void 0,
-			label:'Consumed - '+ coffeeDrank.toString(),
+			label:'Consumed - '+ gcoffeeDrank.toString(),
 			tooltip: 'Coffee\'s consumed'
 			
-		}
+		};
 	}
 
 	function refreshTreeView(){
-		let obj = getTreeItem('consumed');
-		obj.label = 'Consumed - '+ coffeeDrank.toString();
-		obj.contextValue = coffeeDrank.toString();
+		let obj = getTreeItem('gconsumed');
+		obj.label = 'Consumed - '+ gcoffeeDrank.toString();
+		obj.contextValue = gcoffeeDrank.toString();
 
 		vscode.window.createTreeView('coffeeView', {
 			treeDataProvider: CoffeeProvider()
@@ -119,11 +119,11 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function getCoffeeConsumed(){	
-	return coffeeDrank;
+	return gcoffeeDrank;
 }
 
 function addCoffeeCount():void{
-	coffeeDrank++;
+	gcoffeeDrank++;
 	coffeeTimer();
 }
 
@@ -143,7 +143,7 @@ function updateStatusbarItem()
 {
 	let n = getCoffeeConsumed();
 
-	if(n == 1)
+	if(n === 1)
 	{
 		coffeeStatus.text = '$(star) '+ n +' coffee consumed!';
 		vscode.window.showInformationMessage('Java installation processing...');
@@ -161,7 +161,7 @@ function updateStatusbarItem()
 	}
 	else
 	{
-		coffeeStatus.text = '$(star) Need Coffee!'
+		coffeeStatus.text = '$(star) Need Coffee!';
 		coffeeStatus.show();
 	}
 }
