@@ -4,6 +4,8 @@ All notable changes to the "coffee-status" extension will be documented in this 
 
 ## [Unreleased]
 
+## [0.3.4]
+        -Fixed persistant storage issue with counter not keeping track across workspaces. Counter is now tracking GLOBALLY.
 ## [0.3.2]
 
         -Add Licence.md
