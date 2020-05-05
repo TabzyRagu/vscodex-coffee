@@ -10,8 +10,8 @@ let messages = [
 	'There is no life without water. Becasue water is needed to make coffee!',
 	'Coffee is my favorite way to trick myself into doing stuff.',
 	'Behind every successful person is a substantial amount of coffee.',
-	'So many idea\'s, so latte time.',
-	'Good idea\'s start with coffee.',
+	'So many ideas, so latte time.',
+	'Good ideas start with coffee.',
 	'I turn coffee into code.'
 ];
 
@@ -46,7 +46,7 @@ export function activate(context: vscode.ExtensionContext) {
 		gcoffeeDrank = 0;
 		context.globalState.update("gConsumed", getCoffeeConsumed());
 		updateStatusbarItem();
-		vscode.window.showInformationMessage('Coffee count\'s has been reset.');
+		vscode.window.showInformationMessage('Coffee count has been reset.');
 		
 	}));
 
@@ -89,7 +89,7 @@ export function activate(context: vscode.ExtensionContext) {
 			id: 'gconsumed',
 			collapsibleState: void 0,
 			label:'Consumed - '+ gcoffeeDrank.toString(),
-			tooltip: 'Coffee\'s consumed'
+			tooltip: 'Coffees consumed'
 			
 		};
 	}
@@ -151,12 +151,12 @@ function updateStatusbarItem()
 	}
 	else if( n > 1 && n < 10)
 	{
-		coffeeStatus.text = '$(star) '+ n +' coffee\'s consumed!';
+		coffeeStatus.text = '$(star) '+ n +' coffees consumed!';
 		coffeeStatus.show();
 	}
 	else if(n >= 10)
 	{
-		coffeeStatus.text = '$(rocket) '+ n +' coffee\'s consumed!';
+		coffeeStatus.text = '$(rocket) '+ n +' coffees consumed!';
 		coffeeStatus.show();
 	}
 	else
